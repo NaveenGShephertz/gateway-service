@@ -21,7 +21,7 @@ node {
         }
 
         stage ('Run') {
-            docker.image("naveengoswami/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
+            docker.image("naveengoswami/gateway-service:${env.version}").run('-p 8765:8765 -h gateway --name gateway --link discovery --link account --link customer')
         }
      
 
