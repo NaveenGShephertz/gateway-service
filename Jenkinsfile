@@ -16,13 +16,12 @@ node {
 
         stage('Image') {
             dir ('gateway-service') {
-                def app = docker.build "localhost:5000/gateway-service:${env.version}"
-                app.push()
+                def app = docker.build "naveengoswami/gateway-service:${env.version}"
             }
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
+            docker.image("naveengoswami/gateway-service:${env.version}").run('-p 3333:3333 -h gateway --name gateway --link discovery --link account --link customer')
         }
      
 
